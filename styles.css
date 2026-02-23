@@ -1,0 +1,145 @@
+/* ============================= */
+/* StudyNet Global Styles        */
+/* Works for all 3 pages         */
+/* ============================= */
+
+:root{
+  --accent: #05a9e0;
+  --dark: #0b1320;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --page-bg: #e9f7ff;
+  --max-width: 1100px;
+  --radius: 8px;
+}
+
+/* ========== Reset / Base ========== */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  background: var(--page-bg);
+  color: var(--dark);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========== Header / Navigation ========== */
+.site-header {
+  background: var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 18px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.06);
+}
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: 800;
+  font-size: 28px;
+  color: #001f33;
+}
+
+.main-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 18px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #001f33;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.main-nav a[aria-current="page"] {
+  text-decoration: underline;
+}
+
+/* ========== Card Layout ========== */
+.card {
+  background: var(--card-bg);
+  margin: 28px 0;
+  padding: 32px;
+  border-radius: 10px;
+  border: 4px solid rgba(5,169,224,0.12);
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.card-header h1 {
+  font-size: 30px;
+  margin: 0;
+}
+
+.card-footer {
+  text-align: center;
+  margin-top: 28px;
+  color: var(--muted);
+}
+
+/* ============================= */
+/* Layer 4 (Transport Page)     */
+/* ============================= */
+
+.intro {
+  text-align: center;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.flow-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.flow-svg {
+  width: 100%;
+  max-width: 840px;
+}
+
+.central-box { fill: #ffddf2; stroke: #f1c5e8; }
+.central-text { font-size: 14px; font-weight: 700; fill: #3a2b40; }
+.connector { stroke: #cfdbe8; stroke-width: 2; }
+
+.s1 { fill: #7bd389; }
+.s2 { fill: #ffd166; }
+.s3 { fill: #6fb3ff; }
+.s4 { fill: #ffd3a5; }
+.s5 { fill: #c58bff; }
+
+.s-text { font-size: 12px; font-weight: 700; fill: #102033; }
+
+.tcp-udp {
+  display: flex;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.col {
+  flex: 1;
+  border-radius: 8px;
+  border: 1px solid #e5eef6;
+  background: #fbfeff;
+
+
+}

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StudyNet — Practice Questions</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <div class="brand">StudyNet</div>
+      <nav aria-label="Main navigation">
+        <ul class="main-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Layer 2</a></li>
+          <li><a href="#">Layer 3</a></li>
+          <li><a href="#">Layer 4</a></li>
+          <li><a href="#" aria-current="page">Practice Questions</a></li>
+          <li><a href="#">Interactive Labs</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <article class="card practice-card" aria-labelledby="practice-title">
+      <header class="card-header">
+        <h1 id="practice-title">Practice Questions</h1>
+      </header>
+
+      <form class="practice-form" action="#" method="post">
+
+        <!-- Question 1 - Layer 2 -->
+        <section class="question" aria-labelledby="q1-label">
+          <h2 id="q1-label" class="question-title">
+            Question 1. Which device primarily operates at OSI Layer 2?
+          </h2>
+          <fieldset>
+            <label class="choice">
+              <input type="radio" name="q1" value="a">
+              <span class="choice-text">Router</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q1" value="b">
+              <span class="choice-text">Switch</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q1" value="c">
+              <span class="choice-text">Firewall</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q1" value="d">
+              <span class="choice-text">Application Server</span>
+            </label>
+          </fieldset>
+        </section>
+
+        <!-- Question 2 - Layer 3 -->
+        <section class="question" aria-labelledby="q2-label">
+          <h2 id="q2-label" class="question-title">
+            Question 2. What is the primary function of OSI Layer 3?
+          </h2>
+          <fieldset>
+            <label class="choice">
+              <input type="radio" name="q2" value="a">
+              <span class="choice-text">Frame formatting</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q2" value="b">
+              <span class="choice-text">Routing packets between networks</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q2" value="c">
+              <span class="choice-text">End-to-end encryption</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q2" value="d">
+              <span class="choice-text">Error detection using CRC</span>
+            </label>
+          </fieldset>
+        </section>
+
+        <!-- Question 3 - Layer 4 -->
+        <section class="question" aria-labelledby="q3-label">
+          <h2 id="q3-label" class="question-title">
+            Question 3. Which protocol is connection-oriented and ensures reliable delivery?
+          </h2>
+          <fieldset>
+            <label class="choice">
+              <input type="radio" name="q3" value="a">
+              <span class="choice-text">UDP</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q3" value="b">
+              <span class="choice-text">IP</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q3" value="c">
+              <span class="choice-text">TCP</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q3" value="d">
+              <span class="choice-text">ARP</span>
+            </label>
+          </fieldset>
+        </section>
+
+        <!-- Question 4 - Layer 2 vs Layer 3 -->
+        <section class="question" aria-labelledby="q4-label">
+          <h2 id="q4-label" class="question-title">
+            Question 4. Which address is used at OSI Layer 2 for local network communication?
+          </h2>
+          <fieldset>
+            <label class="choice">
+              <input type="radio" name="q4" value="a">
+              <span class="choice-text">IP Address</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q4" value="b">
+              <span class="choice-text">MAC Address</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q4" value="c">
+              <span class="choice-text">Port Number</span>
+            </label>
+
+            <label class="choice">
+              <input type="radio" name="q4" value="d">
+              <span class="choice-text">Domain Name</span>
+            </label>
+          </fieldset>
+        </section>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">SUBMIT</button>
+        </div>
+
+      </form>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© StudyNet</div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StudyNet — Layer 1/2</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header and navigation (reused across pages) -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="brand">StudyNet</div>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="layer-1-2.html">Layer 1/2</a>
+        <a href="layer-3.html">Layer 3</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <!-- Page title -->
+    <h1 class="section-title">Layer 1/2: The Physical/Data Link Layers</h1>
+
+    <div class="grid">
+      <!-- Main article: responsibilities and notes -->
+      <article class="card">
+        <!-- Responsibilities subsection -->
+        <section class="responsibilities" aria-labelledby="resp">
+          <h2 id="resp">Responsibilities</h2>
+          <p>Layer 1 and Layer 2 are responsible for moving raw bits and turning them into frames for communication inside a single physical local network.</p>
+          <ul>
+            <li>Framing (organizing bits into frames)</li>
+            <li>MAC addressing</li>
+            <li>Error detection (CRC)</li>
+            <li>Switching (forwarding frames inside a LAN)</li>
+          </ul>
+        </section>
+
+        <!-- MAC addressing explanation -->
+        <section aria-labelledby="mac">
+          <h2 id="mac">MAC Addresses</h2>
+          <p>Each network device has a MAC address (physical hardware ID). This address is used to deliver frames within the local network.</p>
+          <p><span class="kv">Example:</span> 00:1A:2B:3C:4D:5E</p>
+        </section>
+
+        <!-- Switches explanation -->
+        <section aria-labelledby="switches">
+          <h2 id="switches">Switches</h2>
+          <p>A switch is a Layer 2 device that connects devices on the same network. It sends data only to the devices it is meant for.</p>
+          <h3>How it Works</h3>
+          <ol>
+            <li>Each device has a MAC address.</li>
+            <li>The switch learns which MAC address is on which port.</li>
+            <li>When data arrives, it forwards to the correct port.</li>
+            <li>If unknown, it floods the frame to all ports (once).</li>
+          </ol>
+
+          <h3>Why Switches are Good</h3>
+          <ul>
+            <li>Faster than hubs</li>
+            <li>Reduces network traffic</li>
+            <li>Full-duplex support allows two devices to talk at the same time</li>
+          </ul>
+        </section>
+      </article>
+
+      <!-- Sidebar with image and short takeaways -->
+      <aside class="card">
+        <h3>Key Takeaways</h3>
+        <p class="kv">Layer 1</p>
+        <p>- Physical media, cabling, and signaling</p>
+        <p class="kv">Layer 2</p>
+        <p>- MAC, framing, switching inside a LAN</p>
+
+        <div style="margin-top:16px">
+          <img src="ChatGPT Image Feb 22, 2026, 11_48_20 PM.png" alt="Layer1-2 diagram screenshot" style="width:100%; border-radius:8px" />
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+      <p>&copy; StudyNet — Layer 1/2 overview</p>
+    </footer>
+  </main>
+</body>
+</html>

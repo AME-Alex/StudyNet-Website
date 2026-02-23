@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StudyNet — Layer 3</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="brand">StudyNet</div>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="layer-1-2.html">Layer 1/2</a>
+        <a href="layer-3.html">Layer 3</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <!-- Title and intro -->
+    <h1 class="section-title">Layer 3: The Network Layer</h1>
+
+    <div class="grid">
+      <article class="card">
+        <section aria-labelledby="intro">
+          <h2 id="intro">Introduction</h2>
+          <p>The Network Layer is responsible for moving data between different networks using IP addresses. It determines the best path for data to travel across multiple networks and uses routers to forward packets toward their destination.</p>
+        </section>
+
+        <section aria-labelledby="routers">
+          <h2 id="routers">Routers</h2>
+          <p>Routers connect different networks together. They are the primary Layer 3 device that handles routing.</p>
+          <ul>
+            <li>Your home network → Internet</li>
+            <li>Office network → Another office network</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="how">
+          <h2 id="how">How it Works</h2>
+          <ol>
+            <li>Your computer wants to visit a website.</li>
+            <li>It sees the website is not on the local network.</li>
+            <li>It sends the packet to the default gateway (router).</li>
+            <li>Routers move the packet across multiple networks until it reaches the destination.</li>
+          </ol>
+        </section>
+
+        <section aria-labelledby="resp">
+          <h2 id="resp">Responsibilities</h2>
+          <ul>
+            <li>Logical addressing (IP)</li>
+            <li>Routing (finding best path)</li>
+            <li>Packet forwarding</li>
+            <li>Network separation (broadcast domains)</li>
+          </ul>
+        </section>
+      </article>
+
+      <aside class="card">
+        <h3>Why Layer 3 Matters</h3>
+        <p>Without Layer 3 there is no Internet — no communication between networks and no routing.</p>
+
+        <div style="margin-top:16px">
+          <img src="ChatGPT Image Feb 22, 2026, 11_49_45 PM.png" alt="Layer3 diagram screenshot" style="width:100%; border-radius:8px" />
+        </div>
+      </aside>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+      <p>&copy; StudyNet — Layer 3 overview</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -7,24 +7,26 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
   <header class="site-header" role="banner">
-    <div class="header-inner">
+    <div class="container header-inner">
       <div class="brand">StudyNet</div>
       <nav class="site-nav" role="navigation" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="layer-1-2.html">Layer 1/2</a>
-        <a href="layer-3.html">Layer 3</a>
-        <a href="layer-4-transport-layer.html">Layer 4</a>
-        <a href="practicequestion.html">Practice Questions</a>
-        <a href="interactivelabs.html">Interactive Labs</a>
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="layer-1-2.html">Layer 1/2</a></li>
+          <li><a href="layer-3.html" aria-current="page">Layer 3</a></li>
+          <li><a href="layer-4-transport-layer.html">Layer 4</a></li>
+          <li><a href="practicequestion.html">Practice Questions</a></li>
+          <li><a href="interactivelabs.html">Interactive Labs</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
   <main class="container" role="main">
-    <!-- Title and intro -->
-    <h1 class="section-title">Layer 3: The Network Layer</h1>
+    <header class="page-header">
+      <h1 class="section-title">Layer 3: The Network Layer</h1>
+    </header>
 
     <div class="grid">
       <article class="card">
@@ -63,13 +65,14 @@
         </section>
       </article>
 
-      <aside class="card">
-        <h3>Why Layer 3 Matters</h3>
+      <aside class="card" aria-labelledby="why-layer-3">
+        <h3 id="why-layer-3">Why Layer 3 Matters</h3>
         <p>Without Layer 3 there is no Internet — no communication between networks and no routing.</p>
 
-        <div style="margin-top:16px">
-          <img src="ChatGPT Image Feb 22, 2026, 11_49_45 PM.png" alt="Layer3 diagram screenshot" style="width:100%; border-radius:8px" />
-        </div>
+        <figure class="figure">
+          <img src="ChatGPT Image Feb 22, 2026, 11_49_45 PM.png" alt="Layer3 diagram screenshot" class="responsive-figure" />
+          <figcaption class="sr-only">Layer 3 diagram</figcaption>
+        </figure>
       </aside>
     </div>
 

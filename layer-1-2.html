@@ -7,30 +7,30 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header and navigation (reused across pages) -->
   <header class="site-header" role="banner">
-    <div class="header-inner">
+    <div class="container header-inner">
       <div class="brand">StudyNet</div>
       <nav class="site-nav" role="navigation" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="layer-1-2.html">Layer 1/2</a>
-        <a href="layer-3.html">Layer 3</a>
-        <a href="layer-4-transport-layer.html">Layer 4</a>
-        <a href="practicequestion.html">Practice Questions</a>
-        <a href="interactivelabs.html">Interactive Labs</a>
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="layer-1-2.html" aria-current="page">Layer 1/2</a></li>
+          <li><a href="layer-3.html">Layer 3</a></li>
+          <li><a href="layer-4-transport-layer.html">Layer 4</a></li>
+          <li><a href="practicequestion.html">Practice Questions</a></li>
+          <li><a href="interactivelabs.html">Interactive Labs</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
   <main class="container" role="main">
-    <!-- Page title -->
-    <h1 class="section-title">Layer 1/2: The Physical/Data Link Layers</h1>
+    <header class="page-header">
+      <h1 class="section-title">Layer 1/2: The Physical & Data Link Layers</h1>
+    </header>
 
     <div class="grid">
-      <!-- Main article: responsibilities and notes -->
       <article class="card">
-        <!-- Responsibilities subsection -->
-        <section class="responsibilities" aria-labelledby="resp">
+        <section aria-labelledby="resp">
           <h2 id="resp">Responsibilities</h2>
           <p>Layer 1 and Layer 2 are responsible for moving raw bits and turning them into frames for communication inside a single physical local network.</p>
           <ul>
@@ -41,14 +41,12 @@
           </ul>
         </section>
 
-        <!-- MAC addressing explanation -->
         <section aria-labelledby="mac">
           <h2 id="mac">MAC Addresses</h2>
           <p>Each network device has a MAC address (physical hardware ID). This address is used to deliver frames within the local network.</p>
           <p><span class="kv">Example:</span> 00:1A:2B:3C:4D:5E</p>
         </section>
 
-        <!-- Switches explanation -->
         <section aria-labelledby="switches">
           <h2 id="switches">Switches</h2>
           <p>A switch is a Layer 2 device that connects devices on the same network. It sends data only to the devices it is meant for.</p>
@@ -69,17 +67,17 @@
         </section>
       </article>
 
-      <!-- Sidebar with image and short takeaways -->
-      <aside class="card">
-        <h3>Key Takeaways</h3>
+      <aside class="card" aria-labelledby="key-takeaways">
+        <h3 id="key-takeaways">Key Takeaways</h3>
         <p class="kv">Layer 1</p>
         <p>- Physical media, cabling, and signaling</p>
         <p class="kv">Layer 2</p>
         <p>- MAC, framing, switching inside a LAN</p>
 
-        <div style="margin-top:16px">
-          <img src="ChatGPT Image Feb 22, 2026, 11_48_20 PM.png" alt="Layer1-2 diagram screenshot" style="width:100%; border-radius:8px" />
-        </div>
+        <figure class="figure">
+          <img src="ChatGPT Image Feb 22, 2026, 11_48_20 PM.png" alt="Layer1-2 diagram screenshot" class="responsive-figure" />
+          <figcaption class="sr-only">Layer 1/2 diagram</figcaption>
+        </figure>
       </aside>
     </div>
 

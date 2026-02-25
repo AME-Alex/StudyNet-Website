@@ -1,21 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Layer 4: The Transport Layer — StudyNet</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>StudyNet — Layer 4: Transport Layer</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-row">
-      <div class="brand">StudyNet</div>
-      <nav aria-label="Main navigation">
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">StudyNet</a>
+
+      <!-- CSS-only toggle -->
+      <input id="nav-toggle" class="nav-toggle-input" type="checkbox" aria-hidden="true" />
+      <label class="nav-toggle" for="nav-toggle" aria-hidden="false" role="button" aria-label="Toggle menu">
+        <span class="hamburger" aria-hidden="true"></span>
+      </label>
+
+      <nav id="main-navigation" class="site-nav" role="navigation" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="layer-1-2.html">Layer 1/2</a></li>
           <li><a href="layer-3.html">Layer 3</a></li>
-          <li><a href="layer-4-transport-layer.html">Layer 4</a></li>
+          <li><a href="layer-4-transport-layer.html" aria-current="page">Layer 4</a></li>
           <li><a href="practicequestion.html">Practice Questions</a></li>
           <li><a href="interactivelabs.html">Interactive Labs</a></li>
         </ul>
@@ -30,11 +37,10 @@
         <p class="intro">The transport layer provides the transparent transfer of data between hosts and is responsible for end-to-end recovery and flow control. It also deals with session multiplexing and port numbers in order to send and receive data between hosts.</p>
       </header>
 
-      <section aria-labelledby="services-heading" class="services">
+      <section class="flow-wrap" aria-labelledby="services-heading">
         <h2 id="services-heading" class="visually-hidden">Transport layer services</h2>
 
-        <figure class="flow-wrap" aria-hidden="false">
-          <!-- Decorative diagram in SVG -->
+        <figure aria-hidden="false">
           <svg class="flow-svg" viewBox="0 0 840 160" role="img" aria-labelledby="flow-title">
             <title id="flow-title">Transport layer services diagram</title>
             <rect x="320" y="8" width="200" height="36" rx="6" class="central-box"/>
@@ -62,54 +68,38 @@
             <text x="720" y="120" text-anchor="middle" class="s-text">Multiplexing</text>
           </svg>
         </figure>
-
-        <div class="protocols" role="region" aria-label="Transport protocols">
-          <h3 class="sr-only">Transport protocols</h3>
-          <p class="protocol-desc">Transmission Control Protocol (TCP): a connection-oriented transportation protocol that uses sequencing and acknowledgements to ensure reliable, ordered delivery. User Datagram Protocol (UDP): a connectionless, best-effort protocol used when low-latency is more important than reliability.</p>
-        </div>
       </section>
 
-      <section class="comparison" aria-labelledby="comparison-heading">
-        <h2 id="comparison-heading">TCP vs UDP</h2>
+      <section class="tcp-udp" aria-labelledby="compare-heading">
+        <h2 id="compare-heading" class="visually-hidden">TCP versus UDP</h2>
 
-        <div class="tcp-udp">
-          <aside class="col tcp" aria-labelledby="tcp-heading">
-            <h3 id="tcp-heading">TCP</h3>
-            <ul>
-              <li>Connection-oriented</li>
-              <li>Guaranteed transmission</li>
-              <li>Used by critical applications</li>
-              <li>Slower than UDP</li>
-              <li><strong>20 bytes header</strong></li>
-              <li>Three-way handshake</li>
-              <li>Acknowledgement mechanism</li>
-              <li>Examples: HTTP, HTTPS, FTP, SMTP</li>
-            </ul>
-          </aside>
+        <aside class="col tcp" aria-labelledby="tcp-heading">
+          <h3 id="tcp-heading">TCP</h3>
+          <ul>
+            <li>Connection-oriented</li>
+            <li>Guaranteed transmission</li>
+            <li>Three-way handshake</li>
+            <li>Examples: HTTP, HTTPS, FTP</li>
+          </ul>
+        </aside>
 
-          <aside class="col udp" aria-labelledby="udp-heading">
-            <h3 id="udp-heading">UDP</h3>
-            <ul>
-              <li>Connectionless</li>
-              <li>No delivery guarantee</li>
-              <li>Used for real-time applications</li>
-              <li>Faster than TCP</li>
-              <li><strong>8 bytes header</strong></li>
-              <li>No handshake mechanism</li>
-              <li>No acknowledgements</li>
-              <li>Examples: DNS, DHCP, TFTP, SNMP</li>
-            </ul>
-          </aside>
-        </div>
+        <aside class="col udp" aria-labelledby="udp-heading">
+          <h3 id="udp-heading">UDP</h3>
+          <ul>
+            <li>Connectionless</li>
+            <li>No guarantee</li>
+            <li>Lower latency</li>
+            <li>Examples: DNS, DHCP, TFTP</li>
+          </ul>
+        </aside>
       </section>
 
       <section class="handshake" aria-labelledby="handshake-heading">
         <h2 id="handshake-heading">Three-Way Handshake (TCP)</h2>
-        <p>The three-way handshake establishes a connection between a client and server. It ensures both sides agree on initial sequence numbers and are ready to transfer data reliably.</p>
         <ol>
-          <li>Client sends SYN (synchronize) to server.</li>
-          <li>Server replies with SYN-ACK (synchronize + acknowledgement).</li>
-          <li>Client sends ACK (acknowledgement) back to server.</li>
+          <li>Client sends SYN</li>
+          <li>Server replies with SYN-ACK</li>
+          <li>Client sends ACK to complete connection</li>
         </ol>
 
         <figure class="hand-svg" aria-hidden="false">
@@ -134,25 +124,16 @@
 
             <line x1="200" y1="110" x2="520" y2="110" class="hand-line" marker-end="url(#arrow)" />
             <text x="360" y="102" text-anchor="middle" class="hand-text">ACK (ack = y+1)</text>
-
-            <text x="180" y="152" text-anchor="middle" class="lane-sub">Client IP:port</text>
-            <text x="540" y="152" text-anchor="middle" class="lane-sub">Server IP:port</text>
           </svg>
         </figure>
-
-        <div class="note" role="note">
-          <strong>Note:</strong> The handshake establishes sequence and acknowledgement numbers so TCP can reliably order and recover lost data.
-        </div>
       </section>
 
       <footer class="card-footer">StudyNet — concise networking notes. Designed for study and quick revision.</footer>
     </article>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">&copy; StudyNet</div>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">© StudyNet</div>
   </footer>
 </body>
 </html>
-
-

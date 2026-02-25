@@ -7,18 +7,24 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav-row">
-      <div class="brand">StudyNet</div>
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">StudyNet</a>
 
-      <nav aria-label="Main navigation">
+      <!-- CSS-only toggle -->
+      <input id="nav-toggle" class="nav-toggle-input" type="checkbox" aria-hidden="true" />
+      <label class="nav-toggle" for="nav-toggle" aria-hidden="false" role="button" aria-label="Toggle menu">
+        <span class="hamburger" aria-hidden="true"></span>
+      </label>
+
+      <nav id="main-navigation" class="site-nav" role="navigation" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="layer-1-2.html">Layer 1/2</a></li>
           <li><a href="layer-3.html">Layer 3</a></li>
           <li><a href="layer-4-transport-layer.html">Layer 4</a></li>
           <li><a href="practicequestion.html">Practice Questions</a></li>
-          <li><a href="interactivelabs.html">Interactive Labs</a></li>
+          <li><a href="interactivelabs.html" aria-current="page">Interactive Labs</a></li>
         </ul>
       </nav>
     </div>
@@ -27,12 +33,12 @@
   <main class="container">
     <article class="card labs-card" aria-labelledby="labs-heading">
       <header class="card-header">
-        <h1 id="labs-heading">A multitude of interactive labs are available in order to provide a simulation of hand-on work</h1>
+        <h1 id="labs-heading">Interactive Labs</h1>
+        <p class="lead">Click a lab to open the interactive exercise or download the companion PDF.</p>
       </header>
 
       <section class="labs-list" aria-describedby="labs-desc">
-        <p id="labs-desc" class="visually-hidden">List of available labs with clickable links to the interactive lab and corresponding PDF.</p>
-
+        <p id="labs-desc" class="visually-hidden">List of labs and PDFs</p>
         <ul class="labs">
           <li class="lab-item">
             <h2 class="lab-title">IP Addressing and Subnetting Lab</h2>
@@ -57,26 +63,10 @@
               <a class="pdf-link" href="/pdfs/router-configuration.pdf" target="_blank" rel="noopener">PDF (Link)</a>
             </div>
           </li>
-
-          <li class="lab-item">
-            <h2 class="lab-title">Switch Configuration</h2>
-            <div class="lab-links">
-              <a class="lab-link" href="/labs/switch-configuration.html" target="_blank" rel="noopener">Interactive Lab (Link)</a>
-              <a class="pdf-link" href="/pdfs/switch-configuration.pdf" target="_blank" rel="noopener">PDF (Link)</a>
-            </div>
-          </li>
-
-          <li class="lab-item">
-            <h2 class="lab-title">Wireless Routing</h2>
-            <div class="lab-links">
-              <a class="lab-link" href="/labs/wireless-routing.html" target="_blank" rel="noopener">Interactive Lab (Link)</a>
-              <a class="pdf-link" href="/pdfs/wireless-routing.pdf" target="_blank" rel="noopener">PDF (Link)</a>
-            </div>
-          </li>
         </ul>
       </section>
 
-      <footer class="card-footer">If you want, I can wire up the real lab pages, embed sample exercises, or generate downloadable PDFs for each lab.</footer>
+      <footer class="card-footer">If you'd like, I can build the lab pages too.</footer>
     </article>
   </main>
 

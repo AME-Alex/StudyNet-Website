@@ -5,12 +5,50 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>StudyNet — Layer 1/2</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 2px solid #001f33;
+      border-radius: 6px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      color: #001f33;
+      min-width: 44px;
+      min-height: 44px;
+    }
+    .nav-toggle[aria-expanded="true"] .icon-open  { display: none; }
+    .nav-toggle[aria-expanded="false"] .icon-close { display: none; }
+
+    @media (max-width: 720px) {
+      .nav-toggle { display: flex; align-items: center; justify-content: center; }
+      .header-inner { flex-direction: row !important; flex-wrap: wrap; align-items: center; }
+      .brand { order: 1; flex: 1; }
+      .nav-toggle { order: 2; }
+      .site-nav { order: 3; width: 100%; }
+      .site-nav { display: none; }
+      .site-nav.is-open { display: block; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <div class="brand">StudyNet</div>
-      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+
+      <button
+        class="nav-toggle"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="icon-open"  aria-hidden="true">&#9776;</span>
+        <span class="icon-close" aria-hidden="true">&#10005;</span>
+      </button>
+
+      <nav class="site-nav" id="main-nav" role="navigation" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="index.html">Home</a></li>
           <li><a href="layer-1-2.html" aria-current="page">Layer 1/2</a></li>
@@ -25,7 +63,7 @@
 
   <main class="container" role="main">
     <header class="page-header">
-      <h1 class="section-title">Layer 1/2: The Physical & Data Link Layers</h1>
+      <h1 class="section-title">Layer 1/2: The Physical &amp; Data Link Layers</h1>
     </header>
 
     <div class="grid">
@@ -75,7 +113,12 @@
         <p>- MAC, framing, switching inside a LAN</p>
 
         <figure class="figure">
-          <img src="ChatGPT Image Feb 22, 2026, 11_48_20 PM.png" alt="Layer1-2 diagram screenshot" class="responsive-figure" />
+          <img
+            src="ChatGPT Image Feb 22, 2026, 11_48_20 PM.png"
+            alt="Diagram showing Layer 1 and Layer 2 of the OSI model"
+            class="responsive-figure"
+            style="max-width:100%;height:auto;"
+          />
           <figcaption class="sr-only">Layer 1/2 diagram</figcaption>
         </figure>
       </aside>
@@ -85,5 +128,21 @@
       <p>&copy; StudyNet — Layer 1/2 overview</p>
     </footer>
   </main>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav    = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('is-open', !expanded);
+    });
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  </script>
 </body>
 </html>

@@ -6,6 +6,74 @@
   <title>StudyNet — Practice Questions</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".practice-form");
+
+    // Correct answers
+    const correctAnswers = {
+      q1: "b",
+      q2: "b",
+      q3: "c",
+      q4: "b"
+    };
+
+    // Create a place to show messages
+    const messageBox = document.createElement("div");
+    messageBox.id = "form-message";
+    messageBox.style.marginTop = "15px";
+    messageBox.style.fontWeight = "bold";
+    form.appendChild(messageBox);
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      // Clear previous errors
+      document.querySelectorAll(".question-error").forEach(el => el.remove());
+      document.querySelectorAll(".question").forEach(q => {
+        q.style.border = "";
+        q.style.padding = "";
+      });
+
+      let allAnswered = true;
+      let score = 0;
+
+      for (const questionName in correctAnswers) {
+        const checked = form.querySelector(`input[name="${questionName}"]:checked`);
+        const questionSection = form.querySelector(`input[name="${questionName}"]`).closest(".question");
+
+        if (!checked) {
+          allAnswered = false;
+
+          const error = document.createElement("p");
+          error.className = "question-error";
+          error.textContent = "Please select an answer for this question.";
+          error.style.color = "red";
+          error.style.marginTop = "8px";
+
+          questionSection.appendChild(error);
+          questionSection.style.border = "1px solid red";
+          questionSection.style.padding = "10px";
+        } else {
+          if (checked.value === correctAnswers[questionName]) {
+            score++;
+          }
+        }
+      }
+
+      if (!allAnswered) {
+        messageBox.style.color = "red";
+        messageBox.textContent = "Please answer all questions before submitting.";
+        return;
+      }
+
+      messageBox.style.color = "green";
+      messageBox.textContent = `Submitted successfully! You scored ${score} out of ${Object.keys(correctAnswers).length}.`;
+    });
+  });
+</script>
+
 <body>
   <header class="site-header" role="banner">
   <div class="container header-inner">

@@ -5,38 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>StudyNet — Home</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: 2px solid #001f33;
-      border-radius: 6px;
-      padding: 6px 10px;
-      cursor: pointer;
-      font-size: 20px;
-      line-height: 1;
-      color: #001f33;
-      min-width: 44px;
-      min-height: 44px;
-    }
-    .nav-toggle[aria-expanded="true"] .icon-open  { display: none; }
-    .nav-toggle[aria-expanded="false"] .icon-close { display: none; }
-
-    @media (max-width: 720px) {
-      .nav-toggle { display: flex; align-items: center; justify-content: center; }
-      .header-inner { flex-direction: row !important; flex-wrap: wrap; align-items: center; }
-      .brand { order: 1; flex: 1; }
-      .nav-toggle { order: 2; }
-      .site-nav { order: 3; width: 100%; }
-      .site-nav { display: none; }
-      .site-nav.is-open { display: block; }
-    }
-
-    @media (max-width: 640px) {
-      .hero { flex-direction: column; }
-      .hero-figure { width: 100%; max-width: 320px; margin-inline: auto; }
-    }
-  </style>
 </head>
 <body>
   <header class="site-header" role="banner">
@@ -67,41 +35,87 @@
   </header>
 
   <main class="container" role="main">
+
+    <!-- Hero -->
     <section class="hero" aria-labelledby="welcome-heading">
       <div class="hero-content">
         <h1 id="welcome-heading">Welcome to StudyNet</h1>
-        <p class="lead">StudyNet is a learning platform for people wanting to break into the world of networking. Our goal is to provide free access to learning materials to prepare you for certifications such as Network+, Security+, and CCNA.</p>
+        <p class="lead">StudyNet is a free learning platform for anyone looking to break into the world of networking. Our goal is to give you a solid foundation in how networks work — and to help you prepare for certifications like <strong>CompTIA Network+</strong>, <strong>Security+</strong>, and <strong>Cisco CCNA</strong>.</p>
       </div>
-
       <figure class="hero-figure" aria-hidden="false">
         <img src="images/logo.png" alt="StudyNet logo" class="responsive-figure" />
         <figcaption class="sr-only">StudyNet logo</figcaption>
       </figure>
     </section>
 
+    <!-- What is networking -->
+    <section aria-labelledby="what-net-heading" style="margin-bottom:20px;">
+      <div class="card">
+        <h2 id="what-net-heading">What is Networking?</h2>
+        <p>At its most basic level, a <span class="def-term">network</span> is any group of devices that can communicate with each other. Your laptop, phone, smart TV, and home router are all part of your home network. The internet itself is simply a massive, global network of networks.</p>
+        <p>Networks allow devices to share resources — files, printers, internet access — and communicate in real time. Understanding how that communication happens is the foundation of every IT and networking career.</p>
+        <div class="callout">
+          <strong>Why does this matter for certifications?</strong>
+          Every entry-level networking cert (Network+, CCNA, Security+) expects you to understand how data travels from one device to another. This site breaks that process down layer by layer.
+        </div>
+      </div>
+    </section>
+
+    <!-- OSI Model Overview -->
+    <section aria-labelledby="osi-heading" style="margin-bottom:20px;">
+      <div class="card">
+        <h2 id="osi-heading">The OSI Model — A Quick Overview</h2>
+        <p>The <span class="def-term">OSI (Open Systems Interconnection) Model</span> is a framework used to describe how data travels across a network. It divides the entire communication process into <strong>7 layers</strong>, each with a specific job. Think of it like an assembly line — each layer does its part, then hands off to the next.</p>
+        <p>StudyNet covers <strong>Layers 1 through 4</strong>, which are the foundation of every networking conversation:</p>
+        <ul>
+          <li><strong>Layer 1 — Physical:</strong> The actual cables, radio signals, and hardware that carry raw binary data (bits)</li>
+          <li><strong>Layer 2 — Data Link:</strong> Packages bits into frames and delivers them within a local network using MAC addresses and switches</li>
+          <li><strong>Layer 3 — Network:</strong> Routes data between different networks using IP addresses and routers</li>
+          <li><strong>Layer 4 — Transport:</strong> Manages end-to-end delivery, reliability, and flow control (TCP vs. UDP)</li>
+        </ul>
+        <div class="callout">
+          <strong>Memory tip:</strong> A popular mnemonic for all 7 layers bottom-to-top is <em>"Please Do Not Throw Sausage Pizza Away"</em> — Physical, Data Link, Network, Transport, Session, Presentation, Application.
+        </div>
+      </div>
+    </section>
+
+    <!-- What we provide + Acknowledgments -->
     <section aria-labelledby="what-heading" class="section">
-      <h2 id="what-heading" class="section-title">What Do We Provide</h2>
+      <h2 id="what-heading" class="section-title">What StudyNet Provides</h2>
 
       <div class="grid">
         <article class="card">
-          <h3>Learning materials for networking fundamentals</h3>
-          <p>We provide lessons that walk users through the first 4 layers of the OSI model. Going from Layer 1 all the way up to Layer 4, we dive into important concepts to give you a solid grasp of how networking works while giving you the tools to study for entry-level certifications.</p>
+          <h3>Beginner-friendly networking lessons</h3>
+          <p>Our lessons walk you through the first four layers of the OSI model. Each page explains key concepts, covers <em>why</em> things work the way they do, and grounds everything in practical real-world examples.</p>
+          <p>The content is built for people with little or no prior IT experience — but it goes deep enough to support real exam preparation.</p>
 
-          <h4>Highlights</h4>
+          <h4>What you will learn</h4>
           <ul>
-            <li>Clear, semantic explanations of OSI layers</li>
-            <li>Practice questions and interactive labs</li>
-            <li>Concise diagrams and real-world examples</li>
+            <li>OSI Layers 1–4 explained clearly and in order</li>
+            <li>How physical media (cables, Wi-Fi) carries data as electrical or radio signals</li>
+            <li>How switches use MAC address tables to deliver frames inside a LAN</li>
+            <li>How routers use IP addresses and routing tables to forward packets between networks</li>
+            <li>The difference between TCP and UDP, and when each protocol is used</li>
+            <li>How subnetting divides a network into smaller segments</li>
+            <li>How the TCP three-way handshake establishes a reliable connection</li>
           </ul>
+
+          <h4>Who is this for?</h4>
+          <p>StudyNet is for anyone who is new to networking — whether you are studying for your first cert, switching careers into IT, or simply curious about how the internet works. No prior experience is required.</p>
         </article>
 
         <aside class="card" aria-labelledby="ack-heading">
-          <h3 id="ack-heading">Acknowledgments and Sources</h3>
-          <p>Content inspired by networking academies and certification guides.</p>
+          <h3 id="ack-heading">Acknowledgments &amp; Sources</h3>
+          <p>Our content is inspired by industry-leading networking academies and certification programs. We encourage you to explore their full resources as you grow in your studies.</p>
 
           <div class="logo-row" aria-hidden="true">
-            <img src="images/netacad.webp" alt="Cisco NetAcad logo" class="logo-img" style="max-width:100%;height:auto;" />
-            <img src="images/comptia.png"  alt="CompTIA logo"       class="logo-img" style="max-width:100%;height:auto;" />
+            <img src="images/netacad.webp" alt="Cisco NetAcad logo" class="logo-img" />
+            <img src="images/comptia.png"  alt="CompTIA logo"       class="logo-img" />
+          </div>
+
+          <div class="callout" style="margin-top:16px;">
+            <strong>Where to start</strong>
+            If you are brand new, begin with <a href="layer-1-2.html">Layer 1/2</a> and work your way up. Each page builds on the previous one.
           </div>
         </aside>
       </div>

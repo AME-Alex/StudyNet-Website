@@ -8,91 +8,209 @@
 </head>
 <body>
   <header class="site-header" role="banner">
-  <div class="container header-inner">
-    
-    <div class="brand">StudyNet</div>
-
-    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
-
-    <label for="nav-toggle" class="nav-toggle">
-      <span class="nav-icon-open">☰</span>
-      <span class="nav-icon-close">✕</span>
-    </label>
-
-    <nav class="site-nav" role="navigation" aria-label="Main navigation">
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="layer-1-2.html">Layer 1/2</a></li>
-        <li><a href="layer-3.html">Layer 3</a></li>
-        <li><a href="layer-4-transport-layer.html">Layer 4</a></li>
-        <li><a href="practicequestion.html">Practice Questions</a></li>
-        <li><a href="interactivelabs.html">Interactive Labs</a></li>
-      </ul>
+    <div class="container header-inner">
+      <div class="brand">StudyNet</div>
+ 
+      <button
+        class="nav-toggle"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="icon-open"  aria-hidden="true">&#9776;</span>
+        <span class="icon-close" aria-hidden="true">&#10005;</span>
+      </button>
+ 
+      <nav class="site-nav" id="main-nav" role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="layer-1-2.html" aria-current="page">Layer 1/2</a></li>
+          <li><a href="layer-3.html">Layer 3</a></li>
+          <li><a href="layer-4-transport-layer.html">Layer 4</a></li>
+          <li><a href="practicequestion.html">Practice Questions</a></li>
+          <li><a href="interactivelabs.html">Interactive Labs</a></li>
+        </ul>
       </nav>
     </div>
   </header>
-
+ 
   <main class="container" role="main">
     <header class="page-header">
-      <h1 class="section-title">Layer 1/2: The Physical & Data Link Layers</h1>
+      <h1 class="section-title">Layer 1 &amp; 2: Physical &amp; Data Link Layers</h1>
     </header>
-
+ 
     <div class="grid">
+ 
+      <!-- Main content column -->
       <article class="card">
-        <section aria-labelledby="resp">
-          <h2 id="resp">Responsibilities</h2>
-          <p>Layer 1 and Layer 2 are responsible for moving raw bits and turning them into frames for communication inside a single physical local network.</p>
+ 
+        <!-- Layer 1 -->
+        <section aria-labelledby="layer1-heading">
+          <h2 id="layer1-heading">Layer 1 — The Physical Layer</h2>
+          <p>The Physical Layer is the foundation of the entire OSI model. Its job is simple: move raw <span class="def-term">bits</span> (1s and 0s) from one device to another through some kind of physical medium. It has no understanding of addresses, frames, or packets — it only deals with signals.</p>
+ 
+          <h3>Physical Media Types</h3>
+          <p>The physical medium is whatever carries the signal between devices. The three main types are:</p>
           <ul>
-            <li>Framing (organizing bits into frames)</li>
-            <li>MAC addressing</li>
-            <li>Error detection (CRC)</li>
-            <li>Switching (forwarding frames inside a LAN)</li>
+            <li><strong>Copper (Ethernet cable):</strong> Uses electrical voltage changes to represent bits. The most common type is twisted-pair cable (e.g., Cat5e, Cat6). Cheaper and easy to install, but limited in distance (~100 meters max without a repeater).</li>
+            <li><strong>Fiber optic:</strong> Uses pulses of light to carry data. Much faster and capable of traveling much longer distances than copper — used in data centers and long-distance links. More expensive to install.</li>
+            <li><strong>Wireless (Wi-Fi / Radio):</strong> Uses radio frequency signals transmitted through the air. Convenient but can be affected by interference, walls, and distance from the access point.</li>
+          </ul>
+ 
+          <div class="callout">
+            <strong>Real-world example</strong>
+            When you plug an Ethernet cable into your laptop, the signal traveling through that cable is Layer 1 in action. The cable doesn't know <em>what</em> data it's carrying — it just transmits the electrical signal.
+          </div>
+ 
+          <h3>Key Layer 1 Concepts</h3>
+          <ul>
+            <li><strong>Bandwidth:</strong> The maximum amount of data that can be transmitted per second (e.g., 1 Gbps, 10 Gbps). Higher bandwidth means more data can flow at once.</li>
+            <li><strong>Throughput:</strong> The actual data rate achieved in real conditions — usually lower than bandwidth due to interference, congestion, or overhead.</li>
+            <li><strong>Latency:</strong> The delay between sending data and it arriving at the destination. Low latency is important for things like video calls and online gaming.</li>
+            <li><strong>Repeaters &amp; Hubs:</strong> Basic Layer 1 devices. A <em>repeater</em> regenerates a weak signal to extend distance. A <em>hub</em> connects multiple devices but sends incoming data to <em>all</em> ports — not just the intended destination. Hubs are largely obsolete today.</li>
           </ul>
         </section>
-
+ 
+        <hr style="border:none;border-top:1px solid #e5eef6;margin:24px 0;" />
+ 
+        <!-- Layer 2 -->
+        <section aria-labelledby="layer2-heading">
+          <h2 id="layer2-heading">Layer 2 — The Data Link Layer</h2>
+          <p>The Data Link Layer takes the raw bits from Layer 1 and organizes them into meaningful chunks called <span class="def-term">frames</span>. It's responsible for making sure data is delivered correctly within a single local network (a LAN). It also handles error detection to catch any bits that got corrupted in transit.</p>
+ 
+          <h3>Frames</h3>
+          <p>A <span class="def-term">frame</span> is the Layer 2 unit of data. Think of it as an envelope: it wraps the data and includes addressing information so the network knows where it came from and where it's going — within the local network.</p>
+          <p>A typical Ethernet frame includes:</p>
+          <ul>
+            <li><strong>Destination MAC address:</strong> Where the frame is going</li>
+            <li><strong>Source MAC address:</strong> Where the frame came from</li>
+            <li><strong>EtherType:</strong> Tells the receiver what type of data is inside (e.g., IPv4 or IPv6)</li>
+            <li><strong>Payload (data):</strong> The actual content being carried</li>
+            <li><strong>CRC (Cyclic Redundancy Check):</strong> A checksum used to detect transmission errors</li>
+          </ul>
+        </section>
+ 
         <section aria-labelledby="mac">
           <h2 id="mac">MAC Addresses</h2>
-          <p>Each network device has a MAC address (physical hardware ID). This address is used to deliver frames within the local network.</p>
-          <p><span class="kv">Example:</span> 00:1A:2B:3C:4D:5E</p>
+          <p>Every network interface card (NIC) — whether in a laptop, phone, or printer — has a unique identifier called a <span class="def-term">MAC address</span> (Media Access Control address). This is sometimes called a "physical address" or "hardware address" because it's burned into the hardware by the manufacturer.</p>
+          <p>A MAC address is 48 bits long, typically written in hexadecimal:</p>
+          <p><strong>Example:</strong> <code>00:1A:2B:3C:4D:5E</code></p>
+          <ul>
+            <li>The first 3 bytes (<code>00:1A:2B</code>) identify the <strong>manufacturer</strong> (called the OUI — Organizationally Unique Identifier)</li>
+            <li>The last 3 bytes (<code>3C:4D:5E</code>) are a <strong>unique serial number</strong> assigned by the manufacturer</li>
+          </ul>
+          <div class="callout">
+            <strong>MAC vs. IP addresses</strong>
+            MAC addresses are used to deliver data <em>within</em> a local network. IP addresses (Layer 3) are used to deliver data <em>between</em> networks. Both are needed to get data from your device to a website on the internet.
+          </div>
+ 
+          <h3>ARP — Address Resolution Protocol</h3>
+          <p>Before a device can send a frame, it needs to know the MAC address of the destination. <span class="def-term">ARP</span> is the protocol that handles this. Here is what happens:</p>
+          <ol>
+            <li>Device A wants to send data to Device B and knows Device B's IP address</li>
+            <li>Device A broadcasts an ARP request to the entire local network: <em>"Who has IP 192.168.1.5? Tell me your MAC."</em></li>
+            <li>Device B sees that the IP matches its own, and replies with its MAC address</li>
+            <li>Device A stores this mapping in its ARP cache for future use</li>
+          </ol>
         </section>
-
+ 
         <section aria-labelledby="switches">
           <h2 id="switches">Switches</h2>
-          <p>A switch is a Layer 2 device that connects devices on the same network. It sends data only to the devices it is meant for.</p>
-          <h3>How it Works</h3>
+          <p>A <span class="def-term">switch</span> is the primary Layer 2 device used to connect devices on the same network. Unlike a hub (which blindly forwards data everywhere), a switch is intelligent — it keeps track of which device is connected to which port and only sends data to the intended recipient.</p>
+ 
+          <h3>How a Switch Learns (MAC Address Table)</h3>
+          <p>Switches build a <span class="def-term">MAC address table</span> (also called a CAM table) by observing traffic on the network. Here is the process:</p>
           <ol>
-            <li>Each device has a MAC address.</li>
-            <li>The switch learns which MAC address is on which port.</li>
-            <li>When data arrives, it forwards to the correct port.</li>
-            <li>If unknown, it floods the frame to all ports (once).</li>
+            <li>When a frame arrives on a port, the switch reads the <em>source</em> MAC address and records which port it came from</li>
+            <li>The switch then looks up the <em>destination</em> MAC address in its table</li>
+            <li>If the destination is known, the switch forwards the frame to only that port</li>
+            <li>If the destination is unknown, the switch <strong>floods</strong> the frame to all other ports (except the one it came from), and waits for a reply to learn where the destination lives</li>
           </ol>
-
-          <h3>Why Switches are Good</h3>
-          <ul>
-            <li>Faster than hubs</li>
-            <li>Reduces network traffic</li>
-            <li>Full-duplex support allows two devices to talk at the same time</li>
-          </ul>
+ 
+          <div class="callout">
+            <strong>Why this matters</strong>
+            This "learn and forward" behavior is what makes switches so much more efficient than hubs. Only the right device receives the frame, which reduces unnecessary traffic on the network.
+          </div>
+ 
+          <h3>Full-Duplex Communication</h3>
+          <p>Modern switches support <span class="def-term">full-duplex</span> — meaning a device can send and receive data at the same time. Hubs only support <em>half-duplex</em>, where devices take turns. Full-duplex effectively doubles the usable bandwidth and eliminates collisions.</p>
+ 
+          <h3>VLANs — Virtual Local Area Networks</h3>
+          <p>A <span class="def-term">VLAN</span> allows you to logically divide a single physical switch into multiple separate networks. For example, you could put the accounting department and the engineering department on the same physical switch, but configure them to be on different VLANs so they cannot communicate directly. VLANs are a fundamental concept on the CCNA and Network+ exams.</p>
         </section>
+ 
+        <section aria-labelledby="error-detect">
+          <h2 id="error-detect">Error Detection — CRC</h2>
+          <p>Data can get corrupted during transmission — electrical interference, weak signals, or hardware issues can all flip bits. Layer 2 uses <span class="def-term">CRC (Cyclic Redundancy Check)</span> to detect these errors.</p>
+          <p>When a frame is created, the sender runs a mathematical formula on the data and appends the result (the CRC value) to the end of the frame. When the receiver gets the frame, it runs the same formula on the data it received. If the two values match, the frame is good. If they don't match, the frame is discarded — and higher-layer protocols (like TCP at Layer 4) will handle requesting a retransmission.</p>
+        </section>
+ 
       </article>
-
+ 
+      <!-- Sidebar -->
       <aside class="card" aria-labelledby="key-takeaways">
         <h3 id="key-takeaways">Key Takeaways</h3>
-        <p class="kv">Layer 1</p>
-        <p>- Physical media, cabling, and signaling</p>
-        <p class="kv">Layer 2</p>
-        <p>- MAC, framing, switching inside a LAN</p>
-
+ 
+        <p class="kv">Layer 1 — Physical</p>
+        <ul>
+          <li>Deals with raw bits (1s and 0s)</li>
+          <li>Media: copper, fiber, wireless</li>
+          <li>Devices: repeaters, hubs</li>
+          <li>No concept of addressing</li>
+        </ul>
+ 
+        <p class="kv" style="margin-top:12px;">Layer 2 — Data Link</p>
+        <ul>
+          <li>Groups bits into frames</li>
+          <li>Uses MAC addresses for local delivery</li>
+          <li>Devices: switches, network cards</li>
+          <li>Error detection via CRC</li>
+          <li>ARP resolves IP → MAC</li>
+          <li>VLANs logically separate networks</li>
+        </ul>
+ 
+        <div class="callout" style="margin-top:16px;">
+          <strong>Exam tip</strong>
+          On the CCNA and Network+ exams, you will frequently be asked which OSI layer a device operates at. Remember: <em>switches = Layer 2</em>, <em>routers = Layer 3</em>.
+        </div>
+ 
         <figure class="figure">
-          <img src="ChatGPT Image Feb 22, 2026, 11_48_20 PM.png" alt="Layer1-2 diagram screenshot" class="responsive-figure" />
+          <img
+            src="images/layer-2-switch-topology.webp"
+            alt="Diagram showing Layer 1 and Layer 2 of the OSI model"
+            class="responsive-figure"
+            style="max-width:100%;height:auto;"
+          />
           <figcaption class="sr-only">Layer 1/2 diagram</figcaption>
         </figure>
+ 
+        <div class="callout" style="margin-top:16px;">
+          <strong>Up next</strong>
+          Head to <a href="layer-3.html">Layer 3 — Network Layer</a> to learn how data travels between different networks using IP addresses and routers.
+        </div>
       </aside>
+ 
     </div>
-
+ 
     <footer class="site-footer" role="contentinfo">
       <p>&copy; StudyNet — Layer 1/2 overview</p>
     </footer>
   </main>
+ 
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav    = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('is-open', !expanded);
+    });
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  </script>
 </body>
 </html>

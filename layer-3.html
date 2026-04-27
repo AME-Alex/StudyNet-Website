@@ -8,86 +8,212 @@
 </head>
 <body>
   <header class="site-header" role="banner">
-  <div class="container header-inner">
-    
-    <div class="brand">StudyNet</div>
-
-    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
-
-    <label for="nav-toggle" class="nav-toggle">
-      <span class="nav-icon-open">☰</span>
-      <span class="nav-icon-close">✕</span>
-    </label>
-
-    <nav class="site-nav" role="navigation" aria-label="Main navigation">
-      <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="layer-1-2.html">Layer 1/2</a></li>
-        <li><a href="layer-3.html">Layer 3</a></li>
-        <li><a href="layer-4-transport-layer.html">Layer 4</a></li>
-        <li><a href="practicequestion.html">Practice Questions</a></li>
-        <li><a href="interactivelabs.html">Interactive Labs</a></li>
-      </ul>
+    <div class="container header-inner">
+      <div class="brand">StudyNet</div>
+ 
+      <button
+        class="nav-toggle"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="icon-open"  aria-hidden="true">&#9776;</span>
+        <span class="icon-close" aria-hidden="true">&#10005;</span>
+      </button>
+ 
+      <nav class="site-nav" id="main-nav" role="navigation" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="layer-1-2.html">Layer 1/2</a></li>
+          <li><a href="layer-3.html" aria-current="page">Layer 3</a></li>
+          <li><a href="layer-4-transport-layer.html">Layer 4</a></li>
+          <li><a href="practicequestion.html">Practice Questions</a></li>
+          <li><a href="interactivelabs.html">Interactive Labs</a></li>
+        </ul>
       </nav>
     </div>
   </header>
-
+ 
   <main class="container" role="main">
     <header class="page-header">
       <h1 class="section-title">Layer 3: The Network Layer</h1>
     </header>
-
+ 
     <div class="grid">
+ 
+      <!-- Main content column -->
       <article class="card">
+ 
         <section aria-labelledby="intro">
           <h2 id="intro">Introduction</h2>
-          <p>The Network Layer is responsible for moving data between different networks using IP addresses. It determines the best path for data to travel across multiple networks and uses routers to forward packets toward their destination.</p>
+          <p>Layer 2 can deliver data within a single local network using MAC addresses — but what happens when you need to send data to a device on a <em>completely different network</em>, like a server on the other side of the world? That is where Layer 3 comes in.</p>
+          <p>The <span class="def-term">Network Layer</span> is responsible for moving data between different networks. It uses <strong>IP addresses</strong> to identify devices and <strong>routers</strong> to find the best path between them. Without Layer 3, there would be no internet.</p>
         </section>
-
+ 
+        <section aria-labelledby="ip-addresses">
+          <h2 id="ip-addresses">IP Addresses</h2>
+          <p>An <span class="def-term">IP address</span> (Internet Protocol address) is a logical address assigned to every device on a network. Unlike a MAC address (which is permanent hardware ID), an IP address can change and is assigned by the network. It identifies both <em>what</em> the device is and <em>where</em> it is on the network.</p>
+ 
+          <h3>IPv4</h3>
+          <p>The most common version. An IPv4 address is 32 bits long, written as four decimal numbers separated by dots:</p>
+          <p><strong>Example:</strong> <code>192.168.1.10</code></p>
+          <p>Each number (called an <em>octet</em>) ranges from 0 to 255. IPv4 supports about 4.3 billion unique addresses — which sounds like a lot, but the internet has already run out of public addresses, which is why <strong>private addressing</strong> and <strong>IPv6</strong> exist.</p>
+ 
+          <h3>IPv6</h3>
+          <p>IPv6 is the newer version, using 128-bit addresses written in hexadecimal:</p>
+          <p><strong>Example:</strong> <code>2001:0db8:85a3::8a2e:0370:7334</code></p>
+          <p>IPv6 provides a virtually unlimited number of addresses and is slowly replacing IPv4 across the internet.</p>
+ 
+          <h3>Public vs. Private IP Addresses</h3>
+          <p>Not all IP addresses are the same:</p>
+          <ul>
+            <li><strong>Private addresses</strong> are used inside a local network (your home or office). They are not routable on the public internet. Common private ranges include <code>192.168.x.x</code>, <code>10.x.x.x</code>, and <code>172.16.x.x–172.31.x.x</code>.</li>
+            <li><strong>Public addresses</strong> are globally unique and used to communicate across the internet. Your ISP assigns your router a public IP address.</li>
+          </ul>
+          <div class="callout">
+            <strong>NAT — Network Address Translation</strong>
+            Because most home devices use private IP addresses, a technology called NAT allows your router to translate between private addresses (used inside your home) and your single public IP address (used on the internet). This is why multiple devices in your home can all access the internet through one connection.
+          </div>
+        </section>
+ 
+        <section aria-labelledby="subnetting">
+          <h2 id="subnetting">Subnetting &amp; Subnet Masks</h2>
+          <p><span class="def-term">Subnetting</span> is the process of dividing a large network into smaller sub-networks (subnets). This improves organization, security, and efficiency by grouping related devices together and limiting how far broadcast traffic travels.</p>
+          <p>Every IP address is paired with a <span class="def-term">subnet mask</span> that tells the network which part of the address identifies the network and which part identifies the individual device:</p>
+          <ul>
+            <li><strong>IP address:</strong> <code>192.168.1.10</code></li>
+            <li><strong>Subnet mask:</strong> <code>255.255.255.0</code> (also written as <code>/24</code>)</li>
+            <li><strong>Network portion:</strong> <code>192.168.1</code> — identifies the network</li>
+            <li><strong>Host portion:</strong> <code>.10</code> — identifies the specific device</li>
+          </ul>
+          <p>A <code>/24</code> subnet supports up to 254 usable host addresses (256 minus the network address and broadcast address).</p>
+ 
+          <div class="callout">
+            <strong>CIDR Notation</strong>
+            The "<code>/24</code>" shorthand is called CIDR (Classless Inter-Domain Routing) notation. The number after the slash tells you how many bits are used for the network portion. For example, <code>/24</code> means the first 24 bits are the network, and the remaining 8 bits are for hosts.
+          </div>
+        </section>
+ 
         <section aria-labelledby="routers">
           <h2 id="routers">Routers</h2>
-          <p>Routers connect different networks together. They are the primary Layer 3 device that handles routing.</p>
+          <p>A <span class="def-term">router</span> is the primary Layer 3 device. It connects different networks together and decides how to forward packets from one network toward their destination. Every time data crosses a network boundary, a router is involved.</p>
+ 
+          <h3>Common examples of routing</h3>
           <ul>
-            <li>Your home network → Internet</li>
-            <li>Office network → Another office network</li>
+            <li>Your home network → the internet (via your ISP's router)</li>
+            <li>One office branch → another office branch over a WAN link</li>
+            <li>One VLAN → a different VLAN within the same building (using a Layer 3 switch or router)</li>
           </ul>
+ 
+          <h3>Default Gateway</h3>
+          <p>Every device on a network has a <span class="def-term">default gateway</span> configured — this is the IP address of the local router. When a device wants to send data to an address outside its own network, it sends the packet to the default gateway first, and the router takes it from there.</p>
         </section>
-
+ 
+        <section aria-labelledby="routing-tables">
+          <h2 id="routing-tables">Routing Tables</h2>
+          <p>Routers use a <span class="def-term">routing table</span> to decide where to send each packet. The table is a list of known network destinations and the next hop (the next router) toward each destination.</p>
+ 
+          <p>Routing tables are built in two ways:</p>
+          <ul>
+            <li><strong>Static routing:</strong> An administrator manually enters routes into the routing table. Simple and predictable, but requires manual updates if the network changes.</li>
+            <li><strong>Dynamic routing:</strong> Routers use protocols (like <em>OSPF</em> or <em>EIGRP</em>) to automatically share routing information with each other and update the table. More scalable for large networks.</li>
+          </ul>
+ 
+          <div class="callout">
+            <strong>How a packet gets routed</strong>
+            When a packet arrives, the router compares the destination IP address to every entry in its routing table and forwards it to the matching next hop. If no specific match is found, the router uses the <em>default route</em> (often written as <code>0.0.0.0/0</code>) as a catch-all.
+          </div>
+        </section>
+ 
         <section aria-labelledby="how">
-          <h2 id="how">How it Works</h2>
+          <h2 id="how">End-to-End: How a Packet Travels</h2>
+          <p>Here is a simple step-by-step of what happens when you visit a website:</p>
           <ol>
-            <li>Your computer wants to visit a website.</li>
-            <li>It sees the website is not on the local network.</li>
-            <li>It sends the packet to the default gateway (router).</li>
-            <li>Routers move the packet across multiple networks until it reaches the destination.</li>
+            <li>Your device creates a packet destined for the web server's IP address</li>
+            <li>Your device checks: is the destination on my local network? No — it's on a different network</li>
+            <li>Your device sends the packet to the <em>default gateway</em> (your home router)</li>
+            <li>Your router looks up the destination IP in its routing table and forwards the packet to the next router (your ISP)</li>
+            <li>The packet hops through multiple routers across the internet, each one moving it closer to the destination</li>
+            <li>The packet arrives at the web server, which sends a response back along a similar path</li>
           </ol>
+          <p>Each hop between routers is called — logically enough — a <span class="def-term">hop</span>. The <code>traceroute</code> (or <code>tracert</code> on Windows) command lets you see every router a packet passes through on its way to a destination.</p>
         </section>
-
+ 
         <section aria-labelledby="resp">
-          <h2 id="resp">Responsibilities</h2>
+          <h2 id="resp">Layer 3 Responsibilities — Summary</h2>
           <ul>
-            <li>Logical addressing (IP)</li>
-            <li>Routing (finding best path)</li>
-            <li>Packet forwarding</li>
-            <li>Network separation (broadcast domains)</li>
+            <li><strong>Logical addressing</strong> — assigning IP addresses to identify devices and networks</li>
+            <li><strong>Routing</strong> — finding the best path for packets across multiple networks</li>
+            <li><strong>Packet forwarding</strong> — moving packets from one interface to the next toward the destination</li>
+            <li><strong>Fragmentation</strong> — breaking large packets into smaller pieces if required by the network</li>
+            <li><strong>Broadcast domain separation</strong> — routers do not forward broadcast traffic between networks, which reduces unnecessary load</li>
           </ul>
         </section>
+ 
       </article>
-
+ 
+      <!-- Sidebar -->
       <aside class="card" aria-labelledby="why-layer-3">
         <h3 id="why-layer-3">Why Layer 3 Matters</h3>
-        <p>Without Layer 3 there is no Internet — no communication between networks and no routing.</p>
-
+        <p>Without Layer 3, there is no internet. Every time you load a webpage, send an email, or stream a video, packets are being routed across dozens of networks — all thanks to Layer 3 devices and protocols.</p>
+ 
+        <div class="callout" style="margin-top:12px;">
+          <strong>Exam tip</strong>
+          Know these key Layer 3 facts cold for Network+ and CCNA:
+          <ul style="margin-top:8px;padding-left:16px;">
+            <li>IP is a <em>connectionless</em>, <em>best-effort</em> protocol — it does not guarantee delivery</li>
+            <li>Routers operate at Layer 3</li>
+            <li>Routers separate broadcast domains; switches do not</li>
+            <li>The default gateway is the router's IP address on the local subnet</li>
+          </ul>
+        </div>
+ 
+        <div class="callout" style="margin-top:12px;">
+          <strong>Private IP ranges to memorize</strong>
+          <ul style="margin-top:8px;padding-left:16px;">
+            <li><code>10.0.0.0/8</code></li>
+            <li><code>172.16.0.0/12</code></li>
+            <li><code>192.168.0.0/16</code></li>
+          </ul>
+        </div>
+ 
         <figure class="figure">
-          <img src="ChatGPT Image Feb 22, 2026, 11_49_45 PM.png" alt="Layer3 diagram screenshot" class="responsive-figure" />
+          <img
+            src="images/intervlan-routing-image-example.png"
+            alt="Diagram showing Layer 3 routing across networks"
+            class="responsive-figure"
+            style="max-width:100%;height:auto;"
+          />
           <figcaption class="sr-only">Layer 3 diagram</figcaption>
         </figure>
+ 
+        <div class="callout" style="margin-top:16px;">
+          <strong>Up next</strong>
+          Head to <a href="layer-4-transport-layer.html">Layer 4 — Transport Layer</a> to learn how TCP and UDP manage reliable (or fast) delivery between applications.
+        </div>
       </aside>
+ 
     </div>
-
+ 
     <footer class="site-footer" role="contentinfo">
       <p>&copy; StudyNet — Layer 3 overview</p>
     </footer>
   </main>
+ 
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav    = document.getElementById('main-nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('is-open', !expanded);
+    });
+    nav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('is-open');
+      });
+    });
+  </script>
 </body>
 </html>

@@ -38,35 +38,34 @@
     <article class="card labs-card" aria-labelledby="labs-heading">
       <header class="card-header">
         <h1 id="labs-heading">Interactive Labs</h1>
-        <p class="lead">Click a lab to open the interactive exercise or download the companion PDF.</p>
+        <p class="lead">Download the lab files below and open them in Packet Tracer.</p>
       </header>
 
       <section class="labs-list" aria-describedby="labs-desc">
-        <p id="labs-desc" class="visually-hidden">List of labs and PDFs</p>
+        <p id="labs-desc" class="visually-hidden">List of downloadable labs</p>
         <ul class="labs">
+
           <li class="lab-item">
             <h2 class="lab-title">IP Addressing and Subnetting Lab</h2>
-            <div class="lab-links">
-              <a class="lab-link" href="/labs/ip-addressing-subnetting.html" target="_blank" rel="noopener">Interactive Lab (Link)</a>
-              <a class="pdf-link" href="/pdfs/ip-addressing-subnetting.pdf" target="_blank" rel="noopener">PDF (Link)</a>
-            </div>
+            <a class="file-link" href="Labs/SubnetLab.pka" download>
+              Download Lab
+            </a>
           </li>
 
           <li class="lab-item">
-            <h2 class="lab-title">TCP and UDP Lab</h2>
-            <div class="lab-links">
-              <a class="lab-link" href="/labs/tcp-udp.html" target="_blank" rel="noopener">Interactive Lab (Link)</a>
-              <a class="pdf-link" href="/pdfs/tcp-udp.pdf" target="_blank" rel="noopener">PDF (Link)</a>
-            </div>
+            <h2 class="lab-title">VLAN and Trunking Lab</h2>
+            <a class="file-link" href="Labs/VlanTrunkLab.pka" download>
+              Download Lab
+            </a>
           </li>
 
           <li class="lab-item">
             <h2 class="lab-title">Router Configuration</h2>
-            <div class="lab-links">
-              <a class="lab-link" href="/labs/router-configuration.html" target="_blank" rel="noopener">Interactive Lab (Link)</a>
-              <a class="pdf-link" href="/pdfs/router-configuration.pdf" target="_blank" rel="noopener">PDF (Link)</a>
-            </div>
+            <a class="file-link" href="Labs/RouterConfig.pka" download>
+              Download Lab
+            </a>
           </li>
+
         </ul>
       </section>
 
@@ -77,14 +76,17 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container">© StudyNet</div>
   </footer>
-    <script>
+
+  <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav    = document.getElementById('main-nav');
+
     toggle.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
       toggle.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('is-open', !expanded);
     });
+
     nav.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         toggle.setAttribute('aria-expanded', 'false');

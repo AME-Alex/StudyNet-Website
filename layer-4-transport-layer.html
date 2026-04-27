@@ -33,113 +33,225 @@
       </nav>
     </div>
   </header>
-
-  <main class="container">
-    <article class="card">
-      <header>
-        <h1>Layer 4: The Transport Layer</h1>
-        <p class="intro">The transport layer provides the transparent transfer of data between hosts and is responsible for end-to-end recovery and flow control. It also deals with session multiplexing and port numbers in order to send and receive data between hosts.</p>
-      </header>
-
-      <section class="flow-wrap" aria-labelledby="services-heading">
-        <h2 id="services-heading" class="visually-hidden">Transport layer services</h2>
-
-        <figure aria-hidden="false">
-          <svg class="flow-svg" viewBox="0 0 840 160" role="img" aria-labelledby="flow-title">
-            <title id="flow-title">Transport layer services diagram</title>
-            <rect x="320" y="8" width="200" height="36" rx="6" class="central-box"/>
-            <text x="420" y="32" text-anchor="middle" class="central-text">Transport layer services</text>
-
-            <line x1="360" y1="44" x2="170" y2="100" class="connector"/>
-            <line x1="420" y1="44" x2="300" y2="100" class="connector"/>
-            <line x1="460" y1="44" x2="420" y2="100" class="connector"/>
-            <line x1="500" y1="44" x2="540" y2="100" class="connector"/>
-            <line x1="540" y1="44" x2="700" y2="100" class="connector"/>
-
-            <rect x="120" y="96" width="120" height="36" rx="6" class="s1"/>
-            <text x="180" y="120" text-anchor="middle" class="s-text">End-to-end delivery</text>
-
-            <rect x="260" y="96" width="120" height="36" rx="6" class="s2"/>
-            <text x="320" y="120" text-anchor="middle" class="s-text">Addressing</text>
-
-            <rect x="390" y="96" width="120" height="36" rx="6" class="s3"/>
-            <text x="450" y="120" text-anchor="middle" class="s-text">Reliable delivery</text>
-
-            <rect x="520" y="96" width="120" height="36" rx="6" class="s4"/>
-            <text x="580" y="120" text-anchor="middle" class="s-text">Flow control</text>
-
-            <rect x="660" y="96" width="120" height="36" rx="6" class="s5"/>
-            <text x="720" y="120" text-anchor="middle" class="s-text">Multiplexing</text>
-          </svg>
-        </figure>
-      </section>
-
-      <section class="tcp-udp" aria-labelledby="compare-heading">
-        <h2 id="compare-heading" class="visually-hidden">TCP versus UDP</h2>
-
-        <aside class="col tcp" aria-labelledby="tcp-heading">
-          <h3 id="tcp-heading">TCP</h3>
+ 
+  <main class="container" role="main">
+    <header class="page-header">
+      <h1 class="section-title">Layer 4: The Transport Layer</h1>
+    </header>
+ 
+    <div class="grid">
+ 
+      <!-- Main content column -->
+      <article class="card">
+ 
+        <section aria-labelledby="intro-heading">
+          <h2 id="intro-heading">Introduction</h2>
+          <p>Layers 1 through 3 are responsible for getting data physically from one device to another — but they do not care <em>which application</em> that data belongs to, or whether it arrived correctly and in order. That is the job of <span class="def-term">Layer 4 — the Transport Layer</span>.</p>
+          <p>The Transport Layer manages end-to-end communication between applications running on two different hosts. It decides how data is broken up for sending, how it gets reassembled on the other end, and whether delivery needs to be guaranteed or not.</p>
+ 
+          <div class="callout">
+            <strong>Real-world example</strong>
+            Imagine loading a webpage while streaming music at the same time. Both use the same internet connection, but the Transport Layer uses <em>port numbers</em> to keep those two data streams completely separate so each application only receives the data meant for it.
+          </div>
+        </section>
+ 
+        <section aria-labelledby="services-heading-main">
+          <h2 id="services-heading-main">Transport Layer Services</h2>
+          <p>The Transport Layer provides several key services that sit between the network and your applications:</p>
           <ul>
-            <li>Connection-oriented</li>
-            <li>Guaranteed transmission</li>
-            <li>Three-way handshake</li>
-            <li>Examples: HTTP, HTTPS, FTP</li>
+            <li><strong>End-to-end delivery:</strong> Ensures data gets from the sending application all the way to the receiving application — not just to the destination device</li>
+            <li><strong>Addressing via port numbers:</strong> Uses port numbers to direct data to the correct application (e.g., port 80 for HTTP, port 443 for HTTPS)</li>
+            <li><strong>Reliable delivery (TCP):</strong> Optionally guarantees that all data arrives, in order, with no missing pieces</li>
+            <li><strong>Flow control:</strong> Prevents a fast sender from overwhelming a slow receiver by regulating how much data can be in transit at once</li>
+            <li><strong>Multiplexing:</strong> Allows multiple applications to share the same network connection simultaneously using different port numbers</li>
           </ul>
-        </aside>
-
-        <aside class="col udp" aria-labelledby="udp-heading">
-          <h3 id="udp-heading">UDP</h3>
+ 
+          <div class="flow-wrap">
+            <figure aria-hidden="false">
+              <svg class="flow-svg" viewBox="0 0 840 160" role="img" aria-labelledby="flow-title">
+                <title id="flow-title">Transport layer services diagram</title>
+                <rect x="320" y="8" width="200" height="36" rx="6" class="central-box"/>
+                <text x="420" y="32" text-anchor="middle" class="central-text">Transport layer services</text>
+                <line x1="360" y1="44" x2="170" y2="100" class="connector"/>
+                <line x1="420" y1="44" x2="300" y2="100" class="connector"/>
+                <line x1="460" y1="44" x2="420" y2="100" class="connector"/>
+                <line x1="500" y1="44" x2="540" y2="100" class="connector"/>
+                <line x1="540" y1="44" x2="700" y2="100" class="connector"/>
+                <rect x="120" y="96" width="120" height="36" rx="6" class="s1"/>
+                <text x="180" y="120" text-anchor="middle" class="s-text">End-to-end delivery</text>
+                <rect x="260" y="96" width="120" height="36" rx="6" class="s2"/>
+                <text x="320" y="120" text-anchor="middle" class="s-text">Addressing</text>
+                <rect x="390" y="96" width="120" height="36" rx="6" class="s3"/>
+                <text x="450" y="120" text-anchor="middle" class="s-text">Reliable delivery</text>
+                <rect x="520" y="96" width="120" height="36" rx="6" class="s4"/>
+                <text x="580" y="120" text-anchor="middle" class="s-text">Flow control</text>
+                <rect x="660" y="96" width="120" height="36" rx="6" class="s5"/>
+                <text x="720" y="120" text-anchor="middle" class="s-text">Multiplexing</text>
+              </svg>
+            </figure>
+          </div>
+        </section>
+ 
+        <section aria-labelledby="ports-heading">
+          <h2 id="ports-heading">Port Numbers</h2>
+          <p>A <span class="def-term">port number</span> is a 16-bit number (0–65535) that identifies a specific application or service on a device. While an IP address gets data to the right <em>machine</em>, the port number gets it to the right <em>application</em> on that machine.</p>
+          <p>Think of it like an apartment building: the IP address is the building's street address, and the port number is the specific apartment number inside.</p>
+ 
+          <h3>Well-Known Ports</h3>
+          <p>Ports 0–1023 are reserved for common, well-known services:</p>
           <ul>
-            <li>Connectionless</li>
-            <li>No guarantee</li>
-            <li>Lower latency</li>
-            <li>Examples: DNS, DHCP, TFTP</li>
+            <li><strong>Port 20/21</strong> — FTP (file transfer)</li>
+            <li><strong>Port 22</strong> — SSH (secure remote login)</li>
+            <li><strong>Port 23</strong> — Telnet (unencrypted remote login, legacy)</li>
+            <li><strong>Port 25</strong> — SMTP (sending email)</li>
+            <li><strong>Port 53</strong> — DNS (domain name resolution)</li>
+            <li><strong>Port 67/68</strong> — DHCP (automatic IP address assignment)</li>
+            <li><strong>Port 80</strong> — HTTP (unencrypted web traffic)</li>
+            <li><strong>Port 443</strong> — HTTPS (encrypted web traffic)</li>
           </ul>
-        </aside>
-      </section>
-
-      <section class="handshake" aria-labelledby="handshake-heading">
-        <h2 id="handshake-heading">Three-Way Handshake (TCP)</h2>
-        <ol>
-          <li>Client sends SYN</li>
-          <li>Server replies with SYN-ACK</li>
-          <li>Client sends ACK to complete connection</li>
-        </ol>
-
-        <figure class="hand-svg" aria-hidden="false">
-          <svg viewBox="0 0 720 160" role="img" aria-labelledby="hand-title">
-            <title id="hand-title">Three-way handshake timeline</title>
-            <line x1="180" y1="10" x2="180" y2="150" class="lane"/>
-            <line x1="540" y1="10" x2="540" y2="150" class="lane"/>
-            <text x="180" y="8" text-anchor="middle" class="lane-label">Client</text>
-            <text x="540" y="8" text-anchor="middle" class="lane-label">Server</text>
-
-            <defs>
-              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" class="arrow" />
-              </marker>
-            </defs>
-
-            <line x1="200" y1="50" x2="520" y2="50" class="hand-line" marker-end="url(#arrow)" />
-            <text x="360" y="42" text-anchor="middle" class="hand-text">SYN (seq = x)</text>
-
-            <line x1="520" y1="80" x2="200" y2="80" class="hand-line" marker-end="url(#arrow)" />
-            <text x="360" y="72" text-anchor="middle" class="hand-text">SYN-ACK (seq = y, ack = x+1)</text>
-
-            <line x1="200" y1="110" x2="520" y2="110" class="hand-line" marker-end="url(#arrow)" />
-            <text x="360" y="102" text-anchor="middle" class="hand-text">ACK (ack = y+1)</text>
-          </svg>
-        </figure>
-      </section>
-
-      <footer class="card-footer">StudyNet — concise networking notes. Designed for study and quick revision.</footer>
-    </article>
+ 
+          <div class="callout">
+            <strong>Exam tip</strong>
+            Memorizing well-known port numbers is a guaranteed topic on both Network+ and CCNA. At minimum, know ports 20/21 (FTP), 22 (SSH), 23 (Telnet), 25 (SMTP), 53 (DNS), 80 (HTTP), and 443 (HTTPS).
+          </div>
+        </section>
+ 
+        <hr style="border:none;border-top:1px solid #e5eef6;margin:24px 0;" />
+ 
+        <section aria-labelledby="tcp-udp-heading">
+          <h2 id="tcp-udp-heading">TCP vs. UDP</h2>
+          <p>The Transport Layer has two primary protocols: <span class="def-term">TCP</span> (Transmission Control Protocol) and <span class="def-term">UDP</span> (User Datagram Protocol). They serve very different purposes, and choosing the right one is a fundamental networking decision.</p>
+ 
+          <div class="tcp-udp" aria-label="TCP versus UDP comparison">
+            <aside class="col tcp" aria-labelledby="tcp-heading">
+              <h3 id="tcp-heading">TCP</h3>
+              <ul>
+                <li>Connection-oriented</li>
+                <li>Guaranteed transmission</li>
+                <li>Three-way handshake</li>
+                <li>Examples: HTTP, HTTPS, FTP</li>
+              </ul>
+            </aside>
+            <aside class="col udp" aria-labelledby="udp-heading">
+              <h3 id="udp-heading">UDP</h3>
+              <ul>
+                <li>Connectionless</li>
+                <li>No guarantee</li>
+                <li>Lower latency</li>
+                <li>Examples: DNS, DHCP, TFTP</li>
+              </ul>
+            </aside>
+          </div>
+ 
+          <h3>When to Use TCP</h3>
+          <p><span class="def-term">TCP</span> is used when accuracy matters more than speed. It guarantees that every byte arrives at the destination in the correct order. If a packet is lost, TCP detects this and requests it be re-sent. This makes TCP ideal for:</p>
+          <ul>
+            <li>Loading webpages (HTTP/HTTPS) — every byte of HTML, CSS, and JavaScript must arrive correctly</li>
+            <li>Sending emails (SMTP) — a corrupted email is useless</li>
+            <li>Downloading files (FTP) — a missing chunk corrupts the entire file</li>
+          </ul>
+ 
+          <h3>When to Use UDP</h3>
+          <p><span class="def-term">UDP</span> is used when speed matters more than perfection. It sends data without establishing a connection and without waiting for acknowledgment. A few lost packets are acceptable when:</p>
+          <ul>
+            <li>Streaming video or audio — a missing frame causes a brief glitch, not a broken experience</li>
+            <li>Online gaming — old position data is useless; you need the newest update as fast as possible</li>
+            <li>DNS lookups — small requests that fit in a single packet and can simply be re-sent if lost</li>
+            <li>VoIP calls — a slight audio blip is better than noticeable delay caused by TCP retransmission</li>
+          </ul>
+ 
+          <div class="callout">
+            <strong>Key distinction</strong>
+            TCP trades speed for reliability. UDP trades reliability for speed. Neither is better — they are tools designed for different jobs. Understanding which protocol an application uses, and why, is a core networking concept.
+          </div>
+        </section>
+ 
+        <section aria-labelledby="handshake-heading">
+          <h2 id="handshake-heading">The TCP Three-Way Handshake</h2>
+          <p>Before TCP transfers any data, it must first establish a connection through a process called the <span class="def-term">three-way handshake</span> — a brief exchange of three messages confirming both sides are ready to communicate.</p>
+          <ol>
+            <li><strong>SYN</strong> — The client sends a synchronization request to the server: <em>"I want to connect. Here is my starting sequence number."</em></li>
+            <li><strong>SYN-ACK</strong> — The server acknowledges the request and sends back its own sequence number: <em>"Got it. I am ready. Here is mine."</em></li>
+            <li><strong>ACK</strong> — The client acknowledges the server's response: <em>"Confirmed. Let's begin."</em></li>
+          </ol>
+          <p>Only after this handshake completes does actual data transfer begin. This setup ensures both parties know each other's sequence numbers, which TCP uses to track and reassemble data in the correct order.</p>
+ 
+          <figure class="hand-svg" aria-hidden="false">
+            <svg viewBox="0 0 720 160" role="img" aria-labelledby="hand-title">
+              <title id="hand-title">Three-way handshake timeline</title>
+              <line x1="180" y1="10" x2="180" y2="150" class="lane"/>
+              <line x1="540" y1="10" x2="540" y2="150" class="lane"/>
+              <text x="180" y="8" text-anchor="middle" class="lane-label">Client</text>
+              <text x="540" y="8" text-anchor="middle" class="lane-label">Server</text>
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" class="arrow" />
+                </marker>
+              </defs>
+              <line x1="200" y1="50" x2="520" y2="50" class="hand-line" marker-end="url(#arrow)" />
+              <text x="360" y="42" text-anchor="middle" class="hand-text">SYN (seq = x)</text>
+              <line x1="520" y1="80" x2="200" y2="80" class="hand-line" marker-end="url(#arrow)" />
+              <text x="360" y="72" text-anchor="middle" class="hand-text">SYN-ACK (seq = y, ack = x+1)</text>
+              <line x1="200" y1="110" x2="520" y2="110" class="hand-line" marker-end="url(#arrow)" />
+              <text x="360" y="102" text-anchor="middle" class="hand-text">ACK (ack = y+1)</text>
+            </svg>
+          </figure>
+ 
+          <div class="callout">
+            <strong>Why sequence numbers matter</strong>
+            TCP breaks large data into many small segments, each numbered in sequence. If segments arrive out of order — which is common across the internet — the receiver uses those numbers to reassemble them correctly before passing the data up to the application.
+          </div>
+        </section>
+ 
+        <section aria-labelledby="flow-control-heading">
+          <h2 id="flow-control-heading">Flow Control &amp; Windowing</h2>
+          <p><span class="def-term">Flow control</span> prevents a fast sender from overwhelming a slow receiver. TCP handles this through a mechanism called <span class="def-term">windowing</span>: the receiver tells the sender how much buffer space it currently has available (the <em>window size</em>), and the sender limits how much data it sends before waiting for an acknowledgment.</p>
+          <p>If the receiver is getting overwhelmed, it advertises a smaller window size — effectively telling the sender to slow down. As buffer space frees up, it advertises a larger window and throughput increases again. This process happens automatically and continuously throughout every TCP session.</p>
+        </section>
+ 
+      </article>
+ 
+      <!-- Sidebar -->
+      <aside class="card" aria-labelledby="key-takeaways">
+        <h3 id="key-takeaways">Key Takeaways</h3>
+ 
+        <p class="kv">Layer 4 — Transport</p>
+        <ul>
+          <li>Manages end-to-end delivery between applications</li>
+          <li>Uses port numbers to identify services</li>
+          <li>Two protocols: TCP (reliable) and UDP (fast)</li>
+          <li>TCP uses a three-way handshake to open connections</li>
+          <li>Flow control and windowing prevent receiver overload</li>
+          <li>Multiplexing lets multiple apps share one connection</li>
+        </ul>
+ 
+        <div class="callout" style="margin-top:16px;">
+          <strong>TCP vs. UDP — quick reference</strong>
+          <ul style="margin-top:8px;padding-left:16px;">
+            <li><strong>TCP:</strong> HTTP, HTTPS, FTP, SSH, SMTP</li>
+            <li><strong>UDP:</strong> DNS, DHCP, VoIP, streaming, gaming</li>
+          </ul>
+        </div>
+ 
+        <div class="callout" style="margin-top:12px;">
+          <strong>Exam tip</strong>
+          Know the three-way handshake cold: <em>SYN &rarr; SYN-ACK &rarr; ACK</em>. This appears on nearly every Network+ and CCNA practice exam. Also be ready to identify whether a given protocol uses TCP or UDP.
+        </div>
+ 
+        <div class="callout" style="margin-top:12px;">
+          <strong>Up next</strong>
+          Head to <a href="practicequestion.html">Practice Questions</a> to test your knowledge across all four layers.
+        </div>
+      </aside>
+ 
+    </div>
+ 
+    <footer class="site-footer" role="contentinfo">
+      <p>&copy; StudyNet — Layer 4 overview</p>
+    </footer>
   </main>
-
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">© StudyNet</div>
-  </footer>
-    <script>
+ 
+  <script>
     const toggle = document.querySelector('.nav-toggle');
     const nav    = document.getElementById('main-nav');
     toggle.addEventListener('click', () => {
